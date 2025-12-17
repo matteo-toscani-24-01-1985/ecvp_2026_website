@@ -534,5 +534,20 @@ Known for its seven miles of sandy beaches, Bournemouth also features well-kept 
 	}() );
 
 </script>
+
+<!-- mt add JS for navigation dropmenu -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const toggle = document.querySelector(".nav-toggle");
+  const menu = document.querySelector(".nav-menu");
+
+  if (toggle && menu) {
+    toggle.addEventListener("click", function () {
+      menu.classList.toggle("active");
+    });
+  }
+});
+</script>
+
 </body>
 </html>
