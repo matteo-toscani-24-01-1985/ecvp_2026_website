@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ECVP 2026 — Bournemouth</title>
+  <meta name="description" content="ECVP 2026 in Bournemouth — coming soon. Temporary site">
+  <style>
+    :root{--bg-overlay:rgba(255,255,255,0.7);--accent:#0e7490;--text:#1e293b}
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial}
+    body{
+      display:flex;align-items:center;justify-content:center;
+      background:url('./images/BournemouthPier.png') center/cover no-repeat fixed;
+      color:var(--text);
+      padding:2rem;
+    }
+    .card{
+      width:min(900px,96%);
+      background:var(--bg-overlay);
+      border-radius:16px; padding:36px; text-align:center;
+      box-shadow:0 8px 24px rgba(0,0,0,0.2);
+      backdrop-filter:blur(4px);
+    }
+    h1{font-size:clamp(28px,6vw,56px);line-height:1;margin:0 0 8px;color:#0f172a}
+    .sub{font-size:clamp(14px,2.5vw,18px);opacity:0.9;margin-bottom:18px}
+    .meta{margin-top:18px;color:#334155;font-size:14px}
+    .logo{
+      display:inline-grid;place-items:center;width:84px;height:84px;border-radius:12px;margin-bottom:18px;
+      background:linear-gradient(135deg,var(--accent),#38bdf8);color:white;font-weight:700;font-size:20px;
+      box-shadow:0 6px 18px rgba(15,23,42,0.2);
+    }
+    .coming{display:inline-block;margin-top:12px;padding:10px 16px;border-radius:999px;background:rgba(255,255,255,0.6);font-weight:600}
+    .footer{margin-top:26px;font-size:13px;color:#475569}
+    @media (prefers-reduced-motion:no-preference){
+      .logo{animation:pop 2200ms infinite ease-in-out alternate}
+      @keyframes pop{0%{transform:translateY(0) scale(1)}100%{transform:translateY(-6px) scale(1.03)}}
+    }
+  </style>
+</head>
+<body>
+  <main class="card" role="main">
+    <!-- Temporary index page for the server. Edit this file directly on the server. -->
+    <div class="logo" aria-hidden="true">ECVP</div>
+    <h1>ECVP 2026 — Bournemouth</h1>
+    <p class="sub"> <strong>Coming soon.</strong></p>
+
+    <div class="coming" aria-live="polite">Temporary index — site under development</div>
+
+    <p class="meta"></p>
+    
+  </main>
+</body>
+</html>
