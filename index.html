@@ -199,17 +199,10 @@ h1.has-background,h2.has-background,h3.has-background,h4.has-background,h5.has-b
 
 
 <div class="wp-block-group alignfull has-global-padding is-layout-constrained wp-block-group-is-layout-constrained"><nav class="is-responsive items-justified-space-between alignwide wp-block-navigation is-content-justification-space-between is-layout-flex wp-container-core-navigation-is-layout-b585a4aa wp-block-navigation-is-layout-flex" aria-label="Navigation"
-		 data-wp-interactive="core/navigation" data-wp-context='{"overlayOpenedBy":{"click":false,"hover":false,"focus":false},"type":"overlay","roleAttribute":"","ariaLabel":"Menu"}'>
-<!-- THIS IS THE ORIGINAL BUTTON
-		 <button aria-haspopup="dialog" aria-label="Open menu" class="wp-block-navigation__responsive-container-open"
+		 data-wp-interactive="core/navigation" data-wp-context='{"overlayOpenedBy":{"click":false,"hover":false,"focus":false},"type":"overlay","roleAttribute":"","ariaLabel":"Menu"}'><button aria-haspopup="dialog" aria-label="Open menu" class="wp-block-navigation__responsive-container-open"
 				data-wp-on-async--click="actions.openMenuOnClick"
-				data-wp-on--keydown="actions.handleMenuKeydown">
--->
-				<button class="wp-block-navigation__responsive-container-open nav-toggle"
-        aria-label="Open menu">
-
-
-			<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 5v1.5h14V5H5zm0 7.8h14v-1.5H5v1.5zM5 19h14v-1.5H5V19z" /></svg></button>
+				data-wp-on--keydown="actions.handleMenuKeydown"
+			><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 5v1.5h14V5H5zm0 7.8h14v-1.5H5v1.5zM5 19h14v-1.5H5V19z" /></svg></button>
 				<div class="wp-block-navigation__responsive-container"  id="modal-1"
 				data-wp-class--has-modal-open="state.isMenuOpen"
 				data-wp-class--is-menu-open="state.isMenuOpen"
@@ -228,6 +221,7 @@ h1.has-background,h2.has-background,h3.has-background,h4.has-background,h5.has-b
 				data-wp-on-async--click="actions.closeMenuOnClick"
 			><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="m13.06 12 6.47-6.47-1.06-1.06L12 10.94 5.53 4.47 4.47 5.53 10.94 12l-6.47 6.47 1.06 1.06L12 13.06l6.47 6.47 1.06-1.06L13.06 12Z"></path></svg></button>
 							<div class="wp-block-navigation__responsive-container-content"
+				data-wp-watch="callbacks.focusFirstElement"
 			 id="modal-1-content">
 								<ul class="wp-block-navigation__container is-responsive items-justified-space-between alignwide wp-block-navigation"><li class=" wp-block-navigation-item current-menu-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="index.html" aria-current="page"><span class="wp-block-navigation-item__label">Home</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="conference/index.html"><span class="wp-block-navigation-item__label">Conference</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="social/index.html"><span class="wp-block-navigation-item__label">Social</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="submissions/index.html"><span class="wp-block-navigation-item__label">Submissions</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="index.html%3Fp=5835.html"><span class="wp-block-navigation-item__label">Presentation Guidelines</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="travel/index.html"><span class="wp-block-navigation-item__label">Travel</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="index.html%3Fpage_id=286.html"><span class="wp-block-navigation-item__label">Sponsors</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="index.html%3Fpage_id=295.html"><span class="wp-block-navigation-item__label">Awards</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="committee/index.html"><span class="wp-block-navigation-item__label">Committee</span></a></li></ul>
 							</div>
@@ -534,20 +528,5 @@ Known for its seven miles of sandy beaches, Bournemouth also features well-kept 
 	}() );
 
 </script>
-
-<!-- mt add JS for navigation dropmenu -->
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const toggle = document.querySelector(".nav-toggle");
-  const menu = document.querySelector(".nav-menu");
-
-  if (toggle && menu) {
-    toggle.addEventListener("click", function () {
-      menu.classList.toggle("active");
-    });
-  }
-});
-</script>
-
 </body>
 </html>
