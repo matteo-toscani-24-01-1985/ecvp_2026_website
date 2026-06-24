@@ -58,8 +58,8 @@ function render(){
    if(day && s(p.Day)!==day) return;
    count++;
    if(s(p.Day)!==current){current=s(p.Day);out+='<div class="day">'+current+'</div>';}
-   /* const sid=s(p.SubmissionID); */
-   const sid='p_'+i;
+   const sid=s(p.SubmissionID);
+   /* const sid='p_'+i;*/
 
    const sel=favs.has(sid)?'selected':'';
    out+='<div class="card '+sel+'">';
@@ -83,6 +83,7 @@ function exportICS(){
  let txt='BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//ECVP2026//EN\r\n';
  posters.forEach(function(p){
    const sid=s(p.SubmissionID);
+   /* debugger; */
    if(!favs.has(sid)) return;
    let st='090000',en='103000';
    if(s(p.Time).includes('15')){st='153000';en='170000';}
