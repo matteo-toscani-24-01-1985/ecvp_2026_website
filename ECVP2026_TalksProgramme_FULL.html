@@ -103,6 +103,9 @@ function exportICS(){
    txt+='DESCRIPTION:'+String(t.Speaker).replace(/\r|\n/g,' ')+'\r\n';
    txt+='END:VEVENT\r\n';
  });
+
+ console.log("VEVENT count:", (txt.match(/BEGIN:VEVENT/g) || []).length);
+ console.log(txt.slice(0, 2000));
  txt+='END:VCALENDAR';
 
  const blob=new Blob([txt],{type:'text/calendar'});
