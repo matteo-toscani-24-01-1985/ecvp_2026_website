@@ -82,7 +82,7 @@ function exportICS(){
  talks.forEach((t,i)=>{
    let id=String(t.SubmissionID||i);
    /* console.log(i) */
-   if(!favs.has(id)) console.log(favs.has(id))return;
+   if(!favs.has(id)) {console.log(favs.has(id))} return;
    console.log(' got here 1')
    let p=(t.Time||'').split(':');
    if(p.length<2) return;
