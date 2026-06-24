@@ -78,29 +78,21 @@ function render(){
 function exportICS(){
  const dayMap={Monday:'20260824',Tuesday:'20260825',Wednesday:'20260826',Thursday:'20260827'};
  let txt='BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//ECVP2026//Talks//EN\r\n';
+ console.log(' got here 0')
  talks.forEach((t,i)=>{
-   let id = String(t.SubmissionID || i);
+   let id=String(t.SubmissionID||i);
+   if(!favs.has(id)) return;
+   console.log(' got here 1')
+   let p=(t.Time||'').split(':');
+   if(p.length<2) return;
+   console.log(' got here 2')
+   let h=parseInt(p[0]); let m=parseInt(p[1]);
+   let endH=h, endM=m+15;
 
-     if(!favs.has(id)){
-       return;
-     }
-
-     console.log("Fav matched:", id, t.Title);
-
-     let p = (t.Time || '').split(':');
-
-     if(p.length < 2){
-       console.log("Bad time:", t.Time, t);
-       return;
-     }
-
-     if(String(t.Session).startsWith('Symposium')){
-       console.log("Symposium skipped:", t.Title);
-       return;
-     }
-
-     console.log("Will export:", t.Title);
-
+   if(String(t.Session).startsWith('Symposium')){
+      return; // symposium talks skipped; attendees export selected talks only
+   }
+   console.log(' got here 3')
    if(endM>=60){endH++; endM-=60;}
    const pad=n=>String(n).padStart(2,'0');
 
@@ -111,6 +103,7 @@ function exportICS(){
    txt+='LOCATION:'+String(t.Room).replace(/\r|\n/g,' ')+'\r\n';
    txt+='DESCRIPTION:'+String(t.Speaker).replace(/\r|\n/g,' ')+'\r\n';
    txt+='END:VEVENT\r\n';
+   console.log(' got here 4')
  });
 /*
  console.log("VEVENT count:", (txt.match(/BEGIN:VEVENT/g) || []).length);
