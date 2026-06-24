@@ -96,7 +96,7 @@ function exportICS(){
    let p=(t.Time||'').split(':');
    if(p.length<2) return;
    console.log(' got here 2')
-  
+
    let h=parseInt(p[0]); let m=parseInt(p[1]);
    let endH=h, endM=m+15;
 
@@ -105,6 +105,7 @@ function exportICS(){
       return; // symposium talks skipped; attendees export selected talks only
    }
    */
+
    console.log(' got here 3')
    if(endM>=60){endH++; endM-=60;}
    const pad=n=>String(n).padStart(2,'0');
@@ -117,7 +118,9 @@ function exportICS(){
    txt+='DESCRIPTION:'+String(t.Speaker).replace(/\r|\n/g,' ')+'\r\n';
    txt+='END:VEVENT\r\n';
    console.log(' got here 4')
+
  });
+
 /*
  console.log("VEVENT count:", (txt.match(/BEGIN:VEVENT/g) || []).length);
  console.log(txt.slice(0, 2000));
@@ -129,6 +132,7 @@ function exportICS(){
  a.href=URL.createObjectURL(blob);
  a.download='ECVP2026_MyTalks.ics';
  a.click();
+ debugger;
 }
 
 document.getElementById('q').addEventListener('input',render);
