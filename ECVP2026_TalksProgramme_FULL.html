@@ -81,6 +81,7 @@ function exportICS(){
  console.log(' got here 0')
  talks.forEach((t,i)=>{
    let id=String(t.SubmissionID||i);
+   console.log(i)
    if(!favs.has(id)) return;
    console.log(' got here 1')
    let p=(t.Time||'').split(':');
