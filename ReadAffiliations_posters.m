@@ -90,8 +90,16 @@ for i = 1:length(talks)
 
     names_talks = new_names';
 
-if i==72;error pd;end
-
+%if i==134;error pd;end
+if i==134
+    names=[names(1) {'Eole Lapeyre'} names(2:end)];
+end
+if i==241
+  names_talks{5}='Merav Ahissar';
+end
+% if i==251
+%     error pd
+% end
     for j=1:c
         if strcmp(names_talks{j},names{j}) ==0
             disp([names_talks{j} ' / ' names{j} ' id:' num2str(id) ' ind:' num2str(i)])
