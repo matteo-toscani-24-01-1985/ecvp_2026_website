@@ -131,7 +131,7 @@ end
 
 c=0;
 clear affiliation_codes
-for au =1:10
+for au =1:12
     if au==1
         eval(['cde= affiliations.x1st_auth_codes(posidIn_affiliations);']);
     elseif au==2
