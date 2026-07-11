@@ -199,7 +199,13 @@ t.Authors = t.Authors(~cellfun('isempty', t.Authors));
         fprintf(fid,'{"name":"%s","aff":[', ...
             escapeJS(t.Authors{a}));
 
+         if i==134
+            t.Affiliation_codes=[{[1]}    {[1]}   {[1]}   {[2]}    {[1]}    {[1]}    {[3]}    {[4]}    {[4]}    {[4]}    {[4]}    {[5]}    {[1]}];
+        end
+
         codes = t.Affiliation_codes{a};
+
+       
 
         for c = 1:numel(codes)
 
