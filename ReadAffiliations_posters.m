@@ -152,3 +152,93 @@ all_talks(i).Affiliation_codes=affiliation_codes;
 %     error pd
 % end
 end
+
+
+delete('posters_tmp.txt')
+
+fid = fopen('posters_tmp.txt','w','n','UTF-8');
+
+fprintf(fid,'const posters=[');
+
+for i = 1:numel(all_talks)
+
+    t = all_talks(i);
+
+    if i > 1
+        fprintf(fid,',');
+    end
+
+    fprintf(fid,'{');
+
+    fprintf(fid,'"Day": "%s", ', escapeJS(t.Day));
+    fprintf(fid,'"Time": "%s", ', escapeJS(t.Time));
+    fprintf(fid,'"SessionID": "%s", ', escapeJS(t.Session));
+    fprintf(fid,'"Topic": "%s", ', escapeJS(t.Topic));
+    fprintf(fid,'"Title": "%s", ', escapeJS(t.Title));
+
+    % Keep Author
+    fprintf(fid,'"Author": "%s", ', escapeJS(t.Speaker));
+
+    % Keep CoAuthors
+    fprintf(fid,'"CoAuthors": "%s", ', escapeJS(t.CoAuthors));
+
+    % Add Authors structure
+    fprintf(fid,'"Authors": [');
+
+    for a = 1:numel(t.Authors)
+
+        if a>1
+            fprintf(fid,',');
+        end
+
+        fprintf(fid,'{"name":"%s","aff":[', ...
+            escapeJS(t.Authors{a}));
+
+        codes = t.Affiliation_codes{a};
+
+        for c = 1:numel(codes)
+
+            if c>1
+                fprintf(fid,',');
+
+            end
+
+            fprintf(fid,'%d',codes(c));
+
+        end
+
+        fprintf(fid,']}');
+
+    end
+
+    fprintf(fid,'], ');
+
+
+    % Add affiliations
+    fprintf(fid,'"Affiliations": [');
+
+    for a = 1:numel(t.Affiliations)
+
+        if a>1
+            fprintf(fid,',');
+
+        end
+
+        fprintf(fid,'"%s"', escapeJS(t.Affiliations{a}));
+
+    end
+
+    fprintf(fid,'], ');
+
+
+    fprintf(fid,'"Abstract": "%s", ', escapeJS(t.Abstract));
+
+    fprintf(fid,'"SubmissionID": %d', t.SubmissionID);
+
+    fprintf(fid,'}');
+
+end
+
+fprintf(fid,'];');
+
+fclose(fid);
