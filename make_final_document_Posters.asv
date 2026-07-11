@@ -1,0 +1,132 @@
+%% Read posters JSON and create HTML booklet
+
+clear all
+close all
+clc;
+
+%% Load JSON
+
+jsonText = fileread('posters.json');
+
+posters = jsondecode(jsonText);
+
+
+%% Output HTML
+
+htmlFile = 'Poster_Booklet.html';
+
+fid = fopen(htmlFile,'w','n','UTF-8');
+
+
+%% Header
+
+fprintf(fid,[...
+'<!DOCTYPE html>\n'...
+'<html>\n<head>\n<meta charset="UTF-8">\n'...
+'<title>Poster Booklet</title>\n'...
+'<style>\n'...
+'body {font-family: Arial, sans-serif; margin:40px;}\n'...
+'h1 {text-align:center;}\n'...
+'.poster {margin-bottom:30px; page-break-inside:avoid;}\n'...
+'.session {font-weight:bold; color:#1f4e79;}\n'...
+'.topic {font-style:italic; margin-top:5px;}\n'...
+'.title {font-size:15px; font-weight:bold; margin-top:10px;}\n'...
+'.authors {margin-top:8px;}\n'...
+'.aff {font-size:12px; color:#555; margin-top:5px;}\n'...
+'</style>\n</head>\n<body>\n']);
+
+fprintf(fid,'<h1>Poster Booklet</h1>\n');
+
+
+%% Loop through posters
+
+for k = 1:numel(posters)
+
+    p = posters(k);
+
+    fprintf(fid,'<div class="poster">\n');
+
+
+    % Day and session time
+
+    fprintf(fid,...
+        '<div class="session">%s &nbsp;&nbsp; %s</div>\n',...
+        esc(p.Day),...
+        esc(p.Time));
+
+
+    % Session topic
+
+    fprintf(fid,...
+        '<div class="topic">%s</div>\n',...
+        esc(p.Topic));
+
+
+    % Title
+
+    fprintf(fid,...
+        '<div class="title">%s</div>\n',...
+        esc(p.Title));
+
+
+    %% Authors
+
+    authorNames = strings(1,numel(p.Authors));
+
+    for a = 1:numel(p.Authors)
+
+        authorNames(a) = string(p.Authors(a).name);
+
+    end
+
+    fprintf(fid,...
+        '<div class="authors">%s</div>\n',...
+        esc(strjoin(authorNames,", ")));
+
+
+    %% Affiliations
+
+    fprintf(fid,'<div class="aff">');
+
+    for a = 1:numel(p.Affiliations)
+
+        fprintf(fid,...
+            '<sup>%d</sup> %s<br>',...
+            a,...
+            esc(p.Affiliations(a)));
+
+    end
+
+    fprintf(fid,'</div>\n');
+
+
+    fprintf(fid,'</div>\n');
+
+end
+
+
+%% Close
+
+fprintf(fid,'</body>\n</html>');
+
+fclose(fid);
+
+
+fprintf('Created %s\n',htmlFile);
+
+
+
+%% Helper function
+
+function s = esc(s)
+
+    s = string(s);
+
+    s = replace(s,"&","&amp;");
+    s = replace(s,"<","&lt;");
+    s = replace(s,">","&gt;");
+    s = replace(s,'"',"&quot;");
+
+    s = char(s);
+
+end

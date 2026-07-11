@@ -2,27 +2,27 @@
 % Input file: posters.json
 % Format: const posters=[ {...}, {...} ];
 
-clear; clc;
+clear; clc;close all
 
 
 %% ---------------- READ JSON ----------------
 
-jsonText = fileread('posters_tmp.txt');
+jsonText = fileread('talks_tmp.txt');
 
 % Remove JavaScript wrapper
 jsonText = strtrim(jsonText);
-jsonText = erase(jsonText,'const posters=');
+jsonText = erase(jsonText,'const talks=');
 jsonText = erase(jsonText,';');
 
 % Decode
-posters = jsondecode(jsonText);
+talks = jsondecode(jsonText);
 
 
 
 %% ---------------- CREATE HTML ----------------
 
-htmlFile = 'Poster_Booklet.html';
-
+htmlFile = 'Talks_Booklet.html';
+delete(htmlFile)
 fid = fopen(htmlFile,'w','n','UTF-8');
 
 
@@ -32,7 +32,7 @@ fprintf(fid,[...
 '<!DOCTYPE html>\n'...
 '<html>\n<head>\n'...
 '<meta charset="UTF-8">\n'...
-'<title>Poster Booklet</title>\n'...
+'<title>Talks Booklet</title>\n'...
 '<style>\n'...
 '@page {size:A4; margin:25mm;}\n'...
 'body {\n'...
@@ -78,7 +78,7 @@ fprintf(fid,[...
 ]);
 
 
-fprintf(fid,'<h1>Poster Booklet</h1>\n');
+fprintf(fid,'<h1>Talks Booklet</h1>\n');
 
 
 
@@ -87,9 +87,9 @@ fprintf(fid,'<h1>Poster Booklet</h1>\n');
 previousSession = "";
 
 
-for k = 1:numel(posters)
+for k = 1:numel(talks)
 
-    p = posters(k);
+    p = talks(k);
 
 
     % Define session identifier
