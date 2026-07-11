@@ -128,6 +128,7 @@ end
 
 
 % read all codes
+
 c=0;
 clear affiliation_codes
 for au =1:10
@@ -164,6 +165,10 @@ for i = 1:numel(all_talks)
 
     t = all_talks(i);
 
+% remove empty cells authros
+t.Authors = t.Authors(~cellfun('isempty', t.Authors));
+
+
     if i > 1
         fprintf(fid,',');
     end
@@ -172,7 +177,7 @@ for i = 1:numel(all_talks)
 
     fprintf(fid,'"Day": "%s", ', escapeJS(t.Day));
     fprintf(fid,'"Time": "%s", ', escapeJS(t.Time));
-    fprintf(fid,'"SessionID": "%s", ', escapeJS(t.Session));
+    %fprintf(fid,'"SessionID": "%s", ', escapeJS(t.SessionID));
     fprintf(fid,'"Topic": "%s", ', escapeJS(t.Topic));
     fprintf(fid,'"Title": "%s", ', escapeJS(t.Title));
 
