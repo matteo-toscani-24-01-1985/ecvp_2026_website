@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Restaurants | ECVP 2026</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root {
+    --blue: #075b83;
+    --dark-blue: #03445f;
+    --gold: #c5a05a;
+    --cream: #f7f5f0;
+    --text: #273238;
+    --muted: #69777d;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: "Montserrat", Arial, sans-serif;
+    color: var(--text);
+    background: white;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* HEADER */
+
+.site-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    padding: 25px 5%;
+    color: white;
+}
+
+.header-inner {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 40px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: var(--gold);
+}
+
+.navigation {
+    display: flex;
+    gap: 28px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.navigation a:hover {
+    color: var(--gold);
+}
+
+/* HERO */
+
+.hero {
+    min-height: 580px;
+
+    background:
+        linear-gradient(
+            rgba(3, 68, 95, 0.45),
+            rgba(3, 68, 95, 0.75)
+        ),
+        url("https://ecvp2026.uk/images/ecvp_bournemouth.png")
+        center center / cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    color: white;
+}
+
+.hero-content {
+    max-width: 850px;
+    padding: 30px;
+}
+
+.hero-kicker {
+    color: #e3cb94;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(65px, 9vw, 110px);
+    font-weight: 500;
+    line-height: .9;
+    margin: 0 0 30px;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: auto;
+    font-size: 16px;
+    line-height: 1.9;
+    font-weight: 300;
+}
+
+/* INTRO */
+
+.introduction {
+    max-width: 850px;
+    margin: auto;
+    padding: 90px 25px 70px;
+    text-align: center;
+}
+
+.section-kicker {
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.introduction h2 {
+    font-family: "Cormorant Garamond", serif;
+    color: var(--dark-blue);
+    font-size: 55px;
+    font-weight: 500;
+    margin: 12px 0 20px;
+}
+
+.introduction p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+/* RESTAURANTS */
+
+.restaurant-section {
+    background: var(--cream);
+    padding: 80px 5% 100px;
+}
+
+.restaurant-container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.restaurant-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 45px;
+}
+
+/* CARDS */
+
+.restaurant-card {
+    background: white;
+    box-shadow: 0 8px 30px rgba(0,0,0,.08);
+    transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.restaurant-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 45px rgba(0,0,0,.14);
+}
+
+/* IMAGES */
+
+.restaurant-image {
+    position: relative;
+    height: 320px;
+    overflow: hidden;
+}
+
+.restaurant-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .6s ease;
+}
+
+.restaurant-card:hover img {
+    transform: scale(1.06);
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(
+        135deg,
+        #d9e9ee,
+        #83adbd
+    );
+
+    color: white;
+
+    font-family: "Cormorant Garamond", serif;
+    font-size: 30px;
+}
+
+.restaurant-number {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--gold);
+    color: white;
+
+    font-family: "Cormorant Garamond", serif;
+    font-size: 22px;
+}
+
+.restaurant-price {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+
+    background: white;
+    padding: 8px 14px;
+
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+/* CONTENT */
+
+.restaurant-content {
+    padding: 30px 35px 35px;
+}
+
+.restaurant-type {
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.restaurant-card h3 {
+    color: var(--dark-blue);
+    font-family: "Cormorant Garamond", serif;
+    font-size: 39px;
+    font-weight: 500;
+    margin: 7px 0 10px;
+}
+
+.restaurant-location {
+    color: var(--muted);
+    font-size: 11px;
+    margin-bottom: 18px;
+}
+
+.restaurant-description {
+    color: #58666c;
+    font-size: 13px;
+    line-height: 1.85;
+    margin-bottom: 24px;
+}
+
+.restaurant-button {
+    display: inline-block;
+
+    color: var(--dark-blue);
+
+    padding-bottom: 7px;
+
+    border-bottom: 1px solid var(--gold);
+
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+
+    transition: .25s;
+}
+
+.restaurant-button:hover {
+    color: var(--gold);
+}
+
+/* FEATURED */
+
+.featured {
+    grid-column: span 2;
+
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+
+    background: var(--dark-blue);
+    color: white;
+}
+
+.featured .restaurant-image {
+    height: 100%;
+    min-height: 400px;
+}
+
+.featured .restaurant-content {
+    padding: 55px;
+}
+
+.featured h3 {
+    color: white;
+    font-size: 50px;
+}
+
+.featured .restaurant-description {
+    color: rgba(255,255,255,.75);
+}
+
+.featured .restaurant-location {
+    color: rgba(255,255,255,.6);
+}
+
+.featured .restaurant-button {
+    color: white;
+}
+
+/* LOCATION */
+
+.info-section {
+    padding: 100px 5%;
+}
+
+.info-container {
+    max-width: 1050px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+
+    align-items: center;
+}
+
+.info-section h2 {
+    font-family: "Cormorant Garamond", serif;
+    color: var(--dark-blue);
+    font-size: 52px;
+    font-weight: 500;
+    margin: 10px 0 20px;
+}
+
+.info-section p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.map-placeholder {
+    height: 350px;
+
+    background: linear-gradient(
+        135deg,
+        #dcebe0,
+        #a9c7cf
+    );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--dark-blue);
+
+    font-family: "Cormorant Garamond", serif;
+    font-size: 32px;
+
+    text-align: center;
+
+    box-shadow: 0 10px 35px rgba(0,0,0,.1);
+}
+
+/* FOOTER */
+
+footer {
+    background: var(--dark-blue);
+    color: white;
+    padding: 55px 5%;
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-logo {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 32px;
+    letter-spacing: 2px;
+}
+
+.footer-info {
+    color: rgba(255,255,255,.65);
+    text-align: right;
+    font-size: 10px;
+    line-height: 1.8;
+}
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+    .header-inner {
+        display: block;
+        text-align: center;
+    }
+
+    .logo {
+        font-size: 34px;
+    }
+
+    .navigation {
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 15px;
+        gap: 15px;
+        font-size: 9px;
+    }
+
+    .hero {
+        min-height: 600px;
+    }
+
+    .hero h1 {
+        font-size: 70px;
+    }
+
+    .introduction h2 {
+        font-size: 43px;
+    }
+
+    .restaurant-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .featured {
+        grid-column: span 1;
+        display: block;
+    }
+
+    .featured .restaurant-image {
+        min-height: 300px;
+    }
+
+    .featured .restaurant-content {
+        padding: 35px;
+    }
+
+    .info-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .footer-inner {
+        display: block;
+        text-align: center;
+    }
+
+    .footer-info {
+        text-align: center;
+        margin-top: 20px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <div class="header-inner">
+
+        <div class="logo">
+            ECVP<span>2026</span>
+        </div>
+
+
+
+    </div>
+
+</header>
+
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-kicker">
+            ECVP 2026 · Bournemouth
+        </div>
+
+        <h1>Eat &amp; Drink</h1>
+
+        <p>
+            Bournemouth has restaurants to suit every taste and budget.
+            <br>
+            Here are some suggestions.
+            <br>
+            <strong> We have arranged a few deals with restaurants in the vicinity of the conference centre and in town. </strong>
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="introduction">
+
+    <div class="section-kicker">
+        Explore Bournemouth
+    </div>
+
+    <h2>
+        Restaurants near the conference
+    </h2>
+
+    <p>
+        The Bournemouth International Centre is right in the heart
+        of the town centre, just a few minutes' walk from the beach,
+        Bournemouth Gardens and the Pier. The surrounding streets offer
+        a wide range of restaurants, cafés and bars.
+    </p>
+
+</section>
+
+
+<section class="restaurant-section">
+
+<div class="restaurant-container">
+
+<div class="restaurant-grid">
+
+
+<!-- RESTAURANT 1 -->
+
+<article class="restaurant-card">
+
+    <div class="restaurant-image">
+
+    <img src="https://keywestbournemouth.co.uk/wp-content/uploads/2025/06/Bournemouth-Pier-1536x538.jpg" alt="Restaurant 1">
+    
+        <div class="restaurant-number">01</div>
+
+        <div class="restaurant-price"> <strong> 25% Discount </strong></div>
+
+    </div>
+
+    <div class="restaurant-content">
+
+        <div class="restaurant-type">
+            Fish and chips, stakes, and burgers
+        </div>
+
+        <h3>
+         <a href="https://keywestbournemouth.co.uk/"><strong>KeyWest</strong></a>
+        </h3>
+
+        <div class="restaurant-location">
+         <a href="https://maps.app.goo.gl/HruSDZn1FRG2KG1z8"
+       target="_blank">
+       📍 5 min walk from BIC
+
+    </a>
+                    </div>
+
+        <p class="restaurant-description">
+          
+
+Enjoy lunch by the sea at Key West, at the end of Bournemouth Pier — and the venue for our ECVP 2026 Farewell Party.
+
+ECVP delegates can get 25% off their food bill when they make a reservation and show their ECVP 2026 badge. This means freshly prepared signature fish & chips for around £15, steak for around £16, burgers for around £14, and smaller options such as chicken wings or salt & pepper squid for under £8.
+
+If you want to try fresh fish & chips with a sea view, this is a great option!
+<br>
+<br>
+<a href="https://keywestbournemouth.co.uk/wp-content/uploads/2026/05/Key-West-Food-Menu-June-2026.pdf" target="_blank">View the full menu</a>
+
+        </p>
+
+        <a href=" https://keywestbournemouth.co.uk" class="restaurant-button">
+         Website
+        </a>
+
+    </div>
+
+</article>
+
+
+<!-- RESTAURANT 2 -->
+
+<article class="restaurant-card">
+
+    <div class="restaurant-image">
+
+     <img src="images/SexyLobster.jpeg" alt="Sexy Lobster">
+        <div class="restaurant-number">02</div>
+
+        <div class="restaurant-price"><strong>10% Discount</strong></div>
+
+    </div>
+
+    <div class="restaurant-content">
+
+        <div class="restaurant-type">
+            Seafood
+        </div>
+
+        <h3>
+          Sexy Lobster
+        </h3>
+
+        <div class="restaurant-location">
+         <a href="https://maps.app.goo.gl/exR7ZbpiGb2Gvfqs5"
+       target="_blank">
+            📍 1 min walk from BIC
+            </a>
+        </div>
+
+        <p class="restaurant-description">
+   Sexy Lobster is a vibrant seafood restaurant offering fresh, high-quality dishes, premium steaks, and expertly crafted cocktails in a stylish coastal setting. They are passionate about exceptional food, warm hospitality, and creating memorable dining experiences for every guest.
+   
+   Opening hours:< <ul> <li><strong>Lunch:</strong> 12:00–15:00</li> <li><strong>Dinner:</strong> 17:00–21:00</li> <li><strong>Bar:</strong> 12:00–22:30</li> </ul> 
+   
+ 
+   
+   <br>
+           <a href="https://www.sexy-lobster.com/bookings" class="restaurant-button">
+            Book online 
+        </a>
+
+    </div>
+
+</article>
+
+
+<!-- RESTAURANT 3 -->
+
+<article class="restaurant-card">
+
+    <div class="restaurant-image">
+
+     <img src="images/CozyClub.jpg" alt="Cozy Club">
+        <div class="restaurant-number">03</div>
+
+        <div class="restaurant-price"><strong>10% Discount</strong></div>
+
+    </div>
+
+    <div class="restaurant-content">
+
+        <div class="restaurant-type">
+            Classic Pub
+        </div>
+
+        <h3>
+         Cozy Club
+        </h3>
+
+        <div class="restaurant-location">
+         <a href="https://maps.app.goo.gl/exR7ZbpiGb2Gvfqs5"
+       target="_blank">
+            📍 9 min walk from BIC
+            </a>
+        </div>
+
+        <p class="restaurant-description">
+   In the heart of Bournemouth, just minutes from the gardens and the beach, you’ll find Cosy Club Bournemouth. Step inside sparkling interiors that set the scene for crafted cocktails, breakfast, lunch and dinner and everything in between. Spread across 3 floors, they also offer their top floor Deck!
+   
+   <br>
+           <a href="https://cosyclub.co.uk/menu/bournemouth" class="restaurant-button">
+            Website
+        </a>
+
+    </div>
+
+</article>
+
+<!-- RESTAURANT 4 -->
+
+<article class="restaurant-card">
+
+    <div class="restaurant-image">
+
+     <img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkJfRax-4tUg6T02tKS6A4Y77q3az-7M51QgXShhen4VR5U6N0-0Q5yU_B7buEKo9p9nXRvnIMLNeVAjkxSFZKJ_63QRdpKhgx6xGbcSO6Zr6bNq7ONOalp7zW92rX-A5bfAmWQHaA-R9bE=w426-h240-k-no" alt="Cozy Club">
+        <div class="restaurant-number">04</div>
+
+        <div class="restaurant-price"><strong>20% Discount</strong></div>
+
+    </div>
+
+    <div class="restaurant-content">
+
+        <div class="restaurant-type">
+            Bar, Grill
+        </div>
+
+        <h3>
+      Chickaros
+        </h3>
+
+        <div class="restaurant-location">
+         <a href="https://maps.app.goo.gl/exR7ZbpiGb2Gvfqs5"
+       target="_blank">
+            📍 20 min walk from BIC
+            </a>
+        </div>
+
+        <p class="restaurant-description">
+   <strong>Chickaro’s</strong> is a lively, modern restaurant in Boscombe offering a relaxed dine-in and takeaway experience. Part of a growing UK restaurant brand established in 2019, it is known for its bold, indulgent take on modern comfort food, with a focus on generous portions, vibrant flavours and a casual atmosphere.
+   
+   <br>
+           <a href="https://www.chickarosbournemouth.co.uk/menu" class="restaurant-button">
+            Website
+        </a>
+
+    </div>
+
+</article>
+
+<!-- RESTAURANT 5-->
+
+<article class="restaurant-card">
+
+    <div class="restaurant-image">
+
+     <img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlE4ojalig3j1fF9F5LgwpBoOZraUcfoF5TytyleNbIZyljlaityp9CTzOqKb_wrwBKTImq8VE-p6fuzQg5JSkMrzRCk-_uo56n2DTeCvNycmNaK9h1W189kaAxXI5Ct33LS_qr=s680-w680-h510-rw">
+        <div class="restaurant-number">05</div>
+
+        <div class="restaurant-price"><strong>No Discount, but good prices</strong></div>
+
+    </div>
+
+    <div class="restaurant-content">
+
+        <div class="restaurant-type">
+           Authentic Chinese
+        </div>
+
+        <h3>
+    Yumm Tumms 美食美客
+        </h3>
+
+        <div class="restaurant-location">
+         <a href="https://share.google/rHsVQxEnzXu2xFwk2"
+       target="_blank">
+            📍 18 min walk from BIC
+            </a>
+        </div>
+
+        <p class="restaurant-description">
+  <strong>Yumm Tumms </strong> is our favourite Chinese restaurants in Bournemouth. There is no special discount for ECVP delegates, but we highly recommend it if you are looking for <strong>authentic Chinese food and genuinely spicy dishes</strong>. It is a great option for those wanting something a  different from the usual UK Chinese restaurant experience.
+They do not serve alcohol, but you can buy drinks from the convenience shop next door and <strong>bring them into the restaurant</strong>.
+   
+   <br>
+        
+
+    </div>
+
+</article>
+
+
+
+<!-- RESTAURANT 6-->
+
+<article class="restaurant-card">
+
+    <div class="restaurant-image">
+
+     <img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmSc6FNnzaYYahCwUDHfPpVK0oC-5KWe824WravyNZFjPjLyLnrkQdD-Z59CF_lFdmbavNKbVo6ndO850CdQPG5zmBFFlngXTASowWTAkttzKJtP9q0uTbUAlZLeq5S0kOwRdHM=s680-w680-h510-rw">
+        <div class="restaurant-number">04</div>
+
+        <div class="restaurant-price"><strong>10% Discount</strong></div>
+
+    </div>
+
+    <div class="restaurant-content">
+
+        <div class="restaurant-type">
+          Nepalese, Indian
+        </div>
+
+        <h3>
+    The Gurkha Spice
+        </h3>
+
+        <div class="restaurant-location">
+         <a href="https://maps.app.goo.gl/YLsnz2KZRKteoRoz6"
+       target="_blank">
+            📍 16 Minutes by Car (Uber)
+            </a>
+        </div>
+
+        <p class="restaurant-description">
+  This restaurant is outside walking distance, but we wanted to share it with the ECVP community because it is our favourite Nepalese/Indian restaurant. Experience authentic flavours of Nepal, with fragrant spices, aromatic herbs and traditional dishes prepared with fresh, high-quality ingredients  
+   <br>
+           <a href="https://thegurkhaspice.co.uk/about" class="restaurant-button">
+            Website
+        </a>
+
+    </div>
+
+</article>
+
+</section>
+
+<footer>
+
+<div class="footer-inner">
+
+    <div class="footer-logo">
+        ECVP 2026
+    </div>
+
+    <div class="footer-info">
+        48th European Conference on Visual Perception<br>
+        23–27 August 2026 · Bournemouth, UK
+    </div>
+
+</div>
+
+</footer>
+
+</body>
+</html>
